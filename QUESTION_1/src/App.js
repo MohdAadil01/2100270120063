@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import FilterPage from "./components/FilterPage";
+import ProductsPage from "./components/ProductsPage";
+import Product from "./components/Product";
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       <div className="container mx-auto p-4">
         <h1 className="text-xl font-bold">App</h1>
         <Routes>
-          <Route path="/filter" element={<FilterPage />} />
+          <Route path="/" element={<ProductsPage />} />
+          <Route path="/product/:id" element={<Product />} />
         </Routes>
       </div>
     </Router>
