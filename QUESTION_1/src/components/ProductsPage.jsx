@@ -10,7 +10,14 @@ const ProductsPage = () => {
   const fetchProducts = async (company, category, top, minPrice, maxPrice) => {
     const url = `http://20.244.56.144/test/companies/${company}/category/${category}/products?top=${top}&minPrice=${minPrice}&maxPrice=${maxPrice}`;
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzE3ODMxMjgwLCJpYXQiOjE3MTc4MzA5ODAsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6ImJiMTYzZTE3LTUzNmEtNGZjMC1iNDZjLTVkMTUxMGRjNmZlNyIsInN1YiI6Im1vaGRhYWRpbDQyNDBAZ21haWwuY29tIn0sImNvbXBhbnlOYW1lIjoiQWZmb3JkbWVkIG1lZGljYWwiLCJjbGllbnRJRCI6ImJiMTYzZTE3LTUzNmEtNGZjMC1iNDZjLTVkMTUxMGRjNmZlNyIsImNsaWVudFNlY3JldCI6Ik5hcWVMRENyUHJQS01mZFUiLCJvd25lck5hbWUiOiJNb2hkIEFhZGlsIiwib3duZXJFbWFpbCI6Im1vaGRhYWRpbDQyNDBAZ21haWwuY29tIiwicm9sbE5vIjoiMjEwMDI3MDEyMDA2MyJ9.ip9uWHx5j9tTSPcj8GvhHwt-oLVX-zSoeXx2-PrTtww",
+        },
+      });
       if (!response.ok) {
         setError("Failed to fetch Products");
         return;
